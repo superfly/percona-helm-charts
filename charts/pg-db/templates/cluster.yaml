@@ -3,6 +3,9 @@ kind: PerconaPGCluster
 metadata:
   annotations:
     current-primary: {{ include "pg-database.fullname" . }}
+    {{- with .Values.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
   labels:
     crunchy-pgha-scope: {{ include "pg-database.fullname" . }}
     deployment-name: {{ include "pg-database.fullname" . }}
@@ -176,9 +179,9 @@ spec:
       replicas: {{ $instance.replicas }}
       {{- if $instance.metadata }}
       metadata:
-        {{- if $instance.metadata.labels }}
+        {{- with $instance.metadata.labels }}
         labels:
-{{ $instance.metadata.labels | toYaml | indent 10 }}
+          {{- toYaml . | nindent 10 }}
         {{- end }}
       {{- end }}
       {{- if $instance.affinity }}
