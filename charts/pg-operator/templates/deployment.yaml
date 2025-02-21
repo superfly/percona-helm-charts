@@ -67,9 +67,17 @@ spec:
               value: "{{ .Values.logLevel }}"
             - name: DISABLE_TELEMETRY
               value: "{{ .Values.disableTelemetry }}"
-            {{- if .Values.env }}
-            {{- toYaml .Values.env | nindent 12 }}
-            {{- end }}
+{{- if .Values.extraEnvs }}
+{{- range .Values.extraEnvs }}
+            - name: {{ .name }}
+{{- if .value }}
+              value: {{ .value | quote }}
+{{- else if .valueFrom }}
+              valueFrom:
+{{ toYaml .valueFrom | indent 16 }}
+{{- end }}
+{{- end }}
+{{- end }}
           livenessProbe:
             failureThreshold: 3
             httpGet:
