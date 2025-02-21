@@ -217,10 +217,7 @@ spec:
       {{- end }}
       {{- if $instance.sidecars }}
       sidecars:
-      {{- range $sidecar := $instance.sidecars }}
-      - name: {{ $sidecar.name }}
-        image: {{ $sidecar.image }}
-      {{- end }}
+{{ $instance.sidecars | toYaml | indent 8 }}
       {{- end }}
       {{- if $instance.topologySpreadConstraints }}
       topologySpreadConstraints:
