@@ -4,6 +4,9 @@
 
 replicaCount: 1
 
+# Sentry DSN for error reporting
+# sentryDSN: ""
+
 # Additional environment variables for the operator
 extraEnvs: []
 # - name: MY_ENV_VAR
