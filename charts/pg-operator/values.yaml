@@ -4,6 +4,16 @@
 
 replicaCount: 1
 
+# Additional environment variables for the operator
+env: []
+# - name: MY_ENV_VAR
+#   value: "my-value"
+# - name: SECRET_ENV_VAR
+#   valueFrom:
+#     secretKeyRef:
+#       name: my-secret
+#       key: my-key
+
 operatorImageRepository: percona/percona-postgresql-operator
 imagePullPolicy: IfNotPresent
 image: ""
