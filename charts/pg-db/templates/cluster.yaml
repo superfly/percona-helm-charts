@@ -431,6 +431,22 @@ spec:
       {{- end }}
       {{- if .Values.backups.pgbackrest.repoHost }}
       repoHost:
+        {{- if .Values.backups.pgbackrest.repoHost.sidecars }}
+        sidecars:
+        {{- range $sidecar := .Values.backups.pgbackrest.repoHost.sidecars }}
+        - name: {{ $sidecar.name }}
+          image: {{ $sidecar.image }}
+          {{- if $sidecar.env }}
+          env:
+{{ $sidecar.env | toYaml | indent 12 }}
+          {{- end }}
+        {{- end }}
+        {{- end }}
+        {{- if .Values.backups.pgbackrest.repoHost.env }}
+        env:
+{{ .Values.backups.pgbackrest.repoHost.env | toYaml | indent 10 }}
+        {{- end }}
+      
         priorityClassName: {{ .Values.backups.pgbackrest.repoHost.priorityClassName }}
         {{- if .Values.backups.pgbackrest.repoHost.topologySpreadConstraints }}
         topologySpreadConstraints:
