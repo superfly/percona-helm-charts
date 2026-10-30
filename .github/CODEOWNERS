@@ -1,5 +1,9 @@
-* @hors @tplavcic @nmarukovich @ptankov @jvpasinatto @eleo007
-/charts/pmm/ @percona/pmm-review-be  @spron-in
-/charts/everest/ @percona/everest-backend-devs
-.github/everest-pr-checks.yaml @percona/everest-backend-devs
-.github/everest-release.yaml @percona/everest-backend-devs
+# Fly.io owners. Upstream entries below are commented out: CODEOWNERS is
+# last-match-wins and they would otherwise override this line.
+* @superfly/storage
+
+# * @hors @tplavcic @nmarukovich @ptankov @jvpasinatto @eleo007
+# /charts/pmm/ @percona/pmm-review-be  @spron-in
+# /charts/everest/ @percona/everest-backend-devs
+# .github/everest-pr-checks.yaml @percona/everest-backend-devs
+# .github/everest-release.yaml @percona/everest-backend-devs
